@@ -10,12 +10,16 @@ abstract class NoteEvent extends Equatable {
 class TextAddedEvent extends NoteEvent {
   final String title;
   final String subtitle;
-  final Color color;
+  final List<String> imagePaths;
 
-  const TextAddedEvent(this.title, this.subtitle, this.color);
+  const TextAddedEvent(
+    this.title,
+    this.subtitle,
+    this.imagePaths,
+  );
 
   @override
-  List<Object?> get props => [title, subtitle, color];
+  List<Object?> get props => [title, subtitle];
 }
 
 class NoteUpdatedEvent extends NoteEvent {
@@ -24,9 +28,7 @@ class NoteUpdatedEvent extends NoteEvent {
   const NoteUpdatedEvent(this.note);
 
   @override
-  List<Object?> get props => [
-        note,
-      ];
+  List<Object?> get props => [note];
 }
 
 class LoadNotesEvent extends NoteEvent {}
